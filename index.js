@@ -26,7 +26,7 @@ app.on("ready", () => {
     todayWindow.loadURL(`file://${__dirname}/today.html`);
     todayWindow.on("closed", () => {
 
-        app.quit()
+        app.quit();
         todayWindow = null;
     });
 
@@ -77,12 +77,10 @@ ipcMain.on("appointment:request:list", event => {
     listWindow.webContents.send('appointment:response:list', allAppointment);
 });
 ipcMain.on("appointment:request:today", event => {
-    sendTodayAppointrents();
-    console.log("here2");
+    sendTodayAppointrents()
+    console.log('here2')
 });
-ipcMain.on("appointment:done", (event, id) => {
-    console.log("here3");
-});
+ipcMain.on("appointment:done", (event, id) => {})
 
 
 const sendTodayAppointrents = () =>{
