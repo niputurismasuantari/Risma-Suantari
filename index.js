@@ -84,7 +84,7 @@ ipcMain.on("appointment:done", (event, id) => {
     allAppointment.forEach(appointment => {
         appointment.done = 1
     })
-
+    
     sendTodayAppointrents()
 })
 
