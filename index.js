@@ -81,7 +81,7 @@ ipcMain.on("appointment:create", (event, appointment) => {
     appointment["id"] = uuidv4();
     appointment["done"] = 0;
     allAppointment.push(appointment);
-    sendTodayAppointrents();
+    sendTodayAppointments();
     createWindow.close();
     console.log(allAppointment);
 });
@@ -89,20 +89,20 @@ ipcMain.on("appointment:request:list", event => {
     listWindow.webContents.send('appointment:response:list', allAppointment);
 });
 ipcMain.on("appointment:request:today", event => {
-    sendTodayAppointrents()
+    sendTodayAppointments()
     console.log('here2')
 });
 ipcMain.on("appointment:done", (event, id) => {
-    allAppointment.forEach(appointment => {
+    allAppointment.forEach((appointment) => {
         appointment.done = 1
     })
     
-    sendTodayAppointrents()
+    sendTodayAppointments()
 })
 
 
-const sendTodayAppointrents = () =>{
-    const today = new Date().toISOString().slice(0,10);
+const sendTodayAppointments = () => {
+    const today = new Date().toISOString().slice(0, 10);
     const filtered = allAppointment.filter(
         appointment => appointment.date === today
     );
